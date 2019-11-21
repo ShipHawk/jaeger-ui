@@ -135,7 +135,7 @@ describe('conversion utils', () => {
 describe('lookback utils', () => {
   describe('lookbackToTimestamp', () => {
     const hourInMicroseconds = 60 * 60 * 1000 * 1000;
-    const now = new Date();
+    const now = moment.utc(new Date());
     const nowInMicroseconds = now * 1000;
 
     it('creates timestamp for hours ago', () => {
@@ -353,13 +353,14 @@ describe('<SearchForm>', () => {
     wrapper = shallow(<SearchForm {...defaultProps} />);
   });
 
-  it('enables operations only when a service is selected', () => {
-    let ops = wrapper.find('[placeholder="Select An Operation"]');
-    expect(ops.prop('props').disabled).toBe(true);
-    wrapper = shallow(<SearchForm {...defaultProps} selectedService="svcA" />);
-    ops = wrapper.find('[placeholder="Select An Operation"]');
-    expect(ops.prop('props').disabled).toBe(false);
-  });
+  // disable operations test due to remove from UI
+  // it('enables operations only when a service is selected', () => {
+  //  let ops = wrapper.find('[placeholder="Select An Operation"]');
+  //  expect(ops.prop('props').disabled).toBe(true);
+  //  wrapper = shallow(<SearchForm {...defaultProps} selectedService="svcA" />);
+  //  ops = wrapper.find('[placeholder="Select An Operation"]');
+  //  expect(ops.prop('props').disabled).toBe(false);
+  // });
 
   it('shows custom date inputs when `props.selectedLookback` is "custom"', () => {
     function getDateFieldLengths(compWrapper) {
