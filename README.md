@@ -70,7 +70,7 @@ Running build will output all the static files to the `packages/jaeger-ui/build`
 
 ```
 yarn install
-yarn build
+GENERATE_SOURCEMAP=false yarn build
 ```
 
 ## UI Configuration
