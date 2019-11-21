@@ -264,8 +264,9 @@ export class SearchFormImpl extends React.PureComponent {
       services,
       submitting: disabled,
     } = this.props;
-    const selectedServicePayload = services.find(s => s.name === selectedService);
-    const opsForSvc = (selectedServicePayload && selectedServicePayload.operations) || [];
+    // remove "operation" search item
+    // const selectedServicePayload = services.find(s => s.name === selectedService);
+    // const opsForSvc = (selectedServicePayload && selectedServicePayload.operations) || [];
     const noSelectedService = selectedService === '-' || !selectedService;
     const tz = selectedLookback === 'custom' ? new Date().toTimeString().replace(/^.*?GMT/, 'UTC') : null;
     return (
@@ -289,6 +290,7 @@ export class SearchFormImpl extends React.PureComponent {
             }}
           />
         </FormItem>
+        {/* remove" operation" search item
         <FormItem
           label={
             <span>
@@ -308,6 +310,7 @@ export class SearchFormImpl extends React.PureComponent {
             }}
           />
         </FormItem>
+        */}
 
         <FormItem
           label={
@@ -443,7 +446,9 @@ export class SearchFormImpl extends React.PureComponent {
             type="number"
             component={AdaptedInput}
             placeholder="Limit Results"
-            props={{ disabled, min: 1, max: 1500 }}
+            // force using of "Limit Results" in search
+            // props={{ disabled, min: 1, max: 1500 }}
+            props={{ required: true, min: 1, max: 2500 }}
           />
         </FormItem>
 
